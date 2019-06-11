@@ -1,7 +1,6 @@
 'use strict';
 
 // Open store hours
-
 var hours = [
   '6am',
   '7am',
@@ -21,7 +20,6 @@ var hours = [
 ]
 
 // Each store object
-
 var firstAndPike = {
   location: '1st and Pike',
   minHourCustomer: 23,
@@ -141,24 +139,95 @@ salesAlki();
 
 
 // Add info to the page!
-// 4 Step process: 1. Find a parent element: <ul> 2. Create a new element: <li> 3. Give the element content. 4. Append the new element to the parent element.
 
-var pikeStoreUlEl = document.getElementById('store-list');
-var pikeStoreLiEl = document.createElement('li');
-pikeStoreLiEl.textContent = firstAndPike.location;
-pikeStoreUlEl.appendChild(pikeStoreLiEl);
-
+var pikeUl = document.getElementById('store-list');
+var pikeLi = document.createElement('li');
+pikeLi.textContent = firstAndPike.location;
+pikeUl.appendChild(pikeLi);
 
 for (var i = 0; i < firstAndPike.cookiesSoldHourly.length; i++){
-  // var pikeStoreNestedUl = document.createElement('ul');
-  // document.setAttribute()
-  // var getNestedUl = document.getElementById('nested');
-  // var pikeStoreNestedLi = document.createElement('li');
-  // pikeStoreNestedLi.textContent = hours[i] + ': ' + firstAndPike.cookiesSoldHourly[i];
-  // pikeStoreNestedUl.appendChild(pikeStoreNestedLi);
-  console.log(firstAndPike.cookiesSoldHourly[i]);
+  var pikeNestedUl = document.createElement('ul');
+  pikeUl.appendChild(pikeNestedUl)
+  var pikeNestedLi = document.createElement('li');
+  pikeNestedLi.textContent = hours[i] + ': ' + firstAndPike.cookiesSoldHourly[i] + ' cookies';
+  pikeNestedUl.appendChild(pikeNestedLi);
 };
 
+var pikeNestedLi = document.createElement('li');
+pikeNestedLi.textContent = 'Total: ' + firstAndPike.totalCookies + ' cookies';
+pikeNestedUl.appendChild(pikeNestedLi);
 
+
+var seaTacUl = document.getElementById('store-list');
+var seaTacLi = document.createElement('li');
+seaTacLi.textContent = seaTacAirport.location;
+seaTacUl.appendChild(seaTacLi);
+
+for (var i = 0; i < seaTacAirport.cookiesSoldHourly.length; i++){
+  var seaTacNestedUl = document.createElement('ul');
+  seaTacUl.appendChild(seaTacNestedUl)
+  var seaTacNestedLi = document.createElement('li');
+  seaTacNestedLi.textContent = hours[i] + ': ' + seaTacAirport.cookiesSoldHourly[i] + ' cookies';
+  seaTacNestedUl.appendChild(seaTacNestedLi);
+};
+
+var seaTacNestedLi = document.createElement('li');
+seaTacNestedLi.textContent = 'Total: ' + seaTacAirport.totalCookies + ' cookies';
+seaTacNestedUl.appendChild(seaTacNestedLi);
+
+
+var seattleCenterUl = document.getElementById('store-list');
+var seattleCenterLi = document.createElement('li');
+seattleCenterLi.textContent = seattleCenter.location + ' cookies';
+seattleCenterUl.appendChild(seattleCenterLi);
+
+for (var i = 0; i < seattleCenter.cookiesSoldHourly.length; i++){
+  var seattleCenterNestedUl = document.createElement('ul');
+  seattleCenterUl.appendChild(seattleCenterNestedUl)
+  var seattleCenterNestedLi = document.createElement('li');
+  seattleCenterNestedLi.textContent = hours[i] + ': ' + seattleCenter.cookiesSoldHourly[i] + ' cookies';
+  seattleCenterNestedUl.appendChild(seattleCenterNestedLi);
+};
+
+var seattleCenterNestedLi = document.createElement('li');
+seattleCenterNestedLi.textContent = 'Total: ' + seattleCenter.totalCookies + ' cookies';
+seattleCenterNestedUl.appendChild(seattleCenterNestedLi);
+
+
+
+var capitolHillUl = document.getElementById('store-list');
+var capitolHillLi = document.createElement('li');
+capitolHillLi.textContent = capitolHill.location;
+capitolHillUl.appendChild(capitolHillLi);
+
+for (var i = 0; i < capitolHill.cookiesSoldHourly.length; i++){
+  var capitolHillNestedUl = document.createElement('ul');
+  capitolHillUl.appendChild(capitolHillNestedUl)
+  var capitolHillNestedLi = document.createElement('li');
+  capitolHillNestedLi.textContent = hours[i] + ': ' + capitolHill.cookiesSoldHourly[i] + ' cookies';
+  capitolHillNestedUl.appendChild(capitolHillNestedLi);
+};
+
+var capitolHillNestedLi = document.createElement('li');
+capitolHillNestedLi.textContent = 'Total: ' + capitolHill.totalCookies + ' cookies';
+capitolHillNestedUl.appendChild(capitolHillNestedLi);
+
+
+var alkiUl = document.getElementById('store-list');
+var alkiLi = document.createElement('li');
+alkiLi.textContent = alki.location;
+alkiUl.appendChild(alkiLi);
+
+for (var i = 0; i < alki.cookiesSoldHourly.length; i++){
+  var alkiNestedUl = document.createElement('ul');
+  alkiUl.appendChild(alkiNestedUl)
+  var alkiNestedLi = document.createElement('li');
+  alkiNestedLi.textContent = hours[i] + ': ' + alki.cookiesSoldHourly[i] + ' cookies';
+  alkiNestedUl.appendChild(alkiNestedLi);
+};
+
+var alkiNestedLi = document.createElement('li');
+alkiNestedLi.textContent = 'Total: ' + alki.totalCookies + ' cookies';
+alkiNestedUl.appendChild(alkiNestedLi);
 
 
