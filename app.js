@@ -18,7 +18,7 @@ var hours = [
   '6:00pm',
   '7:00pm',
   '8:00pm'
-]
+];
 
 // Constructor to create stores
 var Store = function(location, minCustomer, maxCustomer, avgCookiesPerCustomer, cookiesPerHour = []){
@@ -68,10 +68,10 @@ function makeHeader(){
     var thEl = document.createElement('th');
     thEl.textContent = hours[i];
     trEl.appendChild(thEl);
-  }
+  };
   thEl = document.createElement('th');
   thEl.textContent = 'Daily Location Total';
-  theadEl.appendChild(trEl)
+  theadEl.appendChild(trEl);
   trEl.appendChild(thEl);
   storeTable.appendChild(theadEl);
 }
@@ -80,7 +80,7 @@ function makeHeader(){
 Store.prototype.addRow = function(){
   if(this.cookiesPerHour.length === 0){
     this.calculateTotalPerHour();
-  }
+  };
 
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
@@ -91,20 +91,20 @@ Store.prototype.addRow = function(){
     tdEl = document.createElement('td');
     tdEl.textContent = this.cookiesPerHour[j];
     trEl.appendChild(tdEl);
-  }
+  };
   
   tdEl = document.createElement('td');
   tdEl.textContent = this.total;
   trEl.appendChild(tdEl);
 
   storeTable.appendChild(trEl);
-}
+};
 
 function sumOfDailyLocationTotals(){
   var allTotals = 0;
   for(var i = 0; i < storeArr.length; i++){
     allTotals += storeArr[i].total;
-  }
+  };
   return allTotals;
 }
 
@@ -121,10 +121,10 @@ function makeTotalsRow(){
     var totalPerHour = 0;
     for(var j = 0; j < storeArr.length; j++){
       totalPerHour += storeArr[j].cookiesPerHour[i];
-    }
+    };
     tdEl.textContent = totalPerHour;
     trEl.appendChild(tdEl);
-  }
+  };
 
   tdEl = document.createElement('td');
   tdEl.textContent = sumOfDailyLocationTotals();
@@ -137,10 +137,10 @@ function makeTotalsRow(){
 
 // Populate the page!
 function makePage(){
-  makeHeader()
+  makeHeader();
   for(var i = 0; i < storeArr.length; i++){
     storeArr[i].addRow();
-  }
+  };
   makeTotalsRow();
 }
 
