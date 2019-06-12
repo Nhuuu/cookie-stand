@@ -1,11 +1,7 @@
 'use strict';
 
-// 1. Reference for the parent
 var storeTable = document.getElementById('store-table');
-
 var storeArr = [];
-
-// Array of open store hours
 var hours = [
   '6:00am',
   '7:00am',
@@ -104,7 +100,7 @@ Store.prototype.addRow = function(){
   storeTable.appendChild(trEl);
 }
 
-function sumOfDailyLocationTotal(){
+function sumOfDailyLocationTotals(){
   var allTotals = 0;
   for(var i = 0; i < storeArr.length; i++){
     allTotals += storeArr[i].total;
@@ -122,18 +118,16 @@ function makeTotalsRow(){
 
   for(var i = 0; i < hours.length; i++){
     tdEl = document.createElement('td');
-
     var totalPerHour = 0;
     for(var j = 0; j < storeArr.length; j++){
       totalPerHour += storeArr[j].cookiesPerHour[i];
     }
-    
     tdEl.textContent = totalPerHour;
     trEl.appendChild(tdEl);
   }
 
   tdEl = document.createElement('td');
-  tdEl.textContent = sumOfDailyLocationTotal();
+  tdEl.textContent = sumOfDailyLocationTotals();
   trEl.appendChild(tdEl);
   tfootEl.appendChild(trEl);
   storeTable.appendChild(tfootEl);
@@ -142,7 +136,7 @@ function makeTotalsRow(){
 
 
 // Populate the page!
-function makePage() {
+function makePage(){
   makeHeader()
   for(var i = 0; i < storeArr.length; i++){
     storeArr[i].addRow();
