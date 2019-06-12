@@ -108,6 +108,33 @@ function sumOfDailyLocationTotals(){
   return allTotals;
 }
 
+
+// Add new store row 
+var form = document.getElementById('form-set');
+var handleAddStoreForm = function(e){
+  e.preventDefault();
+
+  var formLocation = e.target.location.value;
+  var formMinCustomer = e.target.minCustomer.value;
+  var formMaxCustomer = e.target.maxCustomer.value;
+  var formAvgCookiesPerCustomer = e.target.avgCookiesPerCustomer.value;
+  console.log(formLocation)
+
+  var newStore = new Store(formLocation, formMinCustomer, formMaxCustomer, formAvgCookiesPerCustomer);
+  storeArr.push(newStore);
+  
+}
+
+console.log(storeArr)
+form.addEventListener('submit', handleAddStoreForm);
+
+
+
+
+
+
+
+
 // Add Totals row
 function makeTotalsRow(){
   var tfootEl = document.createElement('tfoot');
