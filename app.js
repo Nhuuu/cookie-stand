@@ -63,6 +63,7 @@ Store.prototype.calculateTotalPerHour = function(){
 
 // Make table header with hours
 function makeHeader(){
+  var theadEl = document.createElement('thead');
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
   thEl.textContent = '';
@@ -74,8 +75,9 @@ function makeHeader(){
   }
   thEl = document.createElement('th');
   thEl.textContent = 'Daily Location Total';
+  theadEl.appendChild(trEl)
   trEl.appendChild(thEl);
-  storeTable.appendChild(trEl);
+  storeTable.appendChild(theadEl);
 }
 
 // Add each store's hourly sales to the table
@@ -102,6 +104,41 @@ Store.prototype.addRow = function(){
   storeTable.appendChild(trEl);
 }
 
+function sumOfDailyLocationTotal(){
+  var allTotals = 0;
+  for(var i = 0; i < storeArr.length; i++){
+    allTotals += storeArr[i].total;
+  }
+  return allTotals;
+}
+
+// Add Totals row
+function makeTotalsRow(){
+  var tfootEl = document.createElement('tfoot');
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Totals';
+  trEl.appendChild(tdEl);
+
+  for(var i = 0; i < hours.length; i++){
+    tdEl = document.createElement('td');
+
+    var totalPerHour = 0;
+    for(var j = 0; j < storeArr.length; j++){
+      totalPerHour += storeArr[j].cookiesPerHour[i];
+    }
+    
+    tdEl.textContent = totalPerHour;
+    trEl.appendChild(tdEl);
+  }
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = sumOfDailyLocationTotal();
+  trEl.appendChild(tdEl);
+  tfootEl.appendChild(trEl);
+  storeTable.appendChild(tfootEl);
+}
+
 
 
 // Populate the page!
@@ -110,7 +147,7 @@ function makePage() {
   for(var i = 0; i < storeArr.length; i++){
     storeArr[i].addRow();
   }
-
+  makeTotalsRow();
 }
 
 makePage();
