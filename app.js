@@ -61,20 +61,29 @@ Store.prototype.calculateTotalPerHour = function(){
   this.total = total;
 };
 
+// Make table header with hours
+function makeHeader(){
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = '';
+  trEl.appendChild(thEl);
+  for(var i = 0; i < hours.length; i++){
+    var thEl = document.createElement('th');
+    thEl.textContent = hours[i];
+    trEl.appendChild(thEl);
+  }
+  thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  trEl.appendChild(thEl);
+  storeTable.appendChild(trEl);
+}
 
-Store.prototype.makeTable = function(){
+// Add each store's hourly sales to the table
+Store.prototype.addRow = function(){
   if(this.cookiesPerHour.length === 0){
     this.calculateTotalPerHour();
   }
 
-  // var hourTrEl = document.createElement('tr');
-  // for(var i = 0; i < hours.length; i++){
-  //   var tdEl = document.createElement('td');
-  //   tdEl.textContent = hours[i];
-  //   hourTrEl.appendChild(tdEl);
-  // }
-  
-  
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   tdEl.textContent = this.location;
@@ -86,6 +95,10 @@ Store.prototype.makeTable = function(){
     trEl.appendChild(tdEl);
   }
   
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.total;
+  trEl.appendChild(tdEl);
+
   storeTable.appendChild(trEl);
 }
 
@@ -93,9 +106,11 @@ Store.prototype.makeTable = function(){
 
 // Populate the page!
 function makePage() {
+  makeHeader()
   for(var i = 0; i < storeArr.length; i++){
-    storeArr[i].makeTable();
+    storeArr[i].addRow();
   }
+
 }
 
 makePage();
