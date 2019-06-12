@@ -1,26 +1,27 @@
 'use strict';
 
-var storeUlEl = document.getElementById('store-container');
+// 1. Reference for the parent
+var storeTable = document.getElementById('store-table');
 
 var storeArr = [];
 
 // Array of open store hours
 var hours = [
-  '6am',
-  '7am',
-  '8am',
-  '9am',
-  '10am',
-  '11am',
-  '12pm',
-  '1pm',
-  '2pm',
-  '3pm',
-  '4pm',
-  '5pm',
-  '6pm',
-  '7pm',
-  '8pm'
+  '6:00am',
+  '7:00am',
+  '8:00am',
+  '9:00am',
+  '10:00am',
+  '11:00am',
+  '12:00pm',
+  '1:00pm',
+  '2:00pm',
+  '3:00pm',
+  '4:00pm',
+  '5:00pm',
+  '6:00pm',
+  '7:00pm',
+  '8:00pm'
 ]
 
 // Constructor to create stores
@@ -60,35 +61,40 @@ Store.prototype.calculateTotalPerHour = function(){
   this.total = total;
 };
 
-Store.prototype.makeList = function(){
+
+Store.prototype.makeTable = function(){
   if(this.cookiesPerHour.length === 0){
     this.calculateTotalPerHour();
   }
-  
-  var locationLiEl = document.createElement('li');
-  var h2El = document.createElement('h2');
-  h2El.textContent = this.location;
-  locationLiEl.appendChild(h2El);
 
-  var ulEl = document.createElement('ul');
-  for (var j = 0; j < this.cookiesPerHour.length; j++){
-    var hourLiEl = document.createElement('li');
-    hourLiEl.textContent = hours[j] + ': ' + this.cookiesPerHour[j] + ' cookies';
-    ulEl.appendChild(hourLiEl);
+  // var hourTrEl = document.createElement('tr');
+  // for(var i = 0; i < hours.length; i++){
+  //   var tdEl = document.createElement('td');
+  //   tdEl.textContent = hours[i];
+  //   hourTrEl.appendChild(tdEl);
+  // }
+  
+  
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.location;
+  trEl.appendChild(tdEl);
+
+  for(var j = 0; j < this.cookiesPerHour.length; j++){
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.cookiesPerHour[j];
+    trEl.appendChild(tdEl);
   }
   
-  var totalLiEl = document.createElement('li');
-  totalLiEl.textContent = 'Total: ' + this.total + ' cookies';
-  ulEl.appendChild(totalLiEl);
-
-  locationLiEl.appendChild(ulEl);
-  storeUlEl.appendChild(locationLiEl);
+  storeTable.appendChild(trEl);
 }
+
+
 
 // Populate the page!
 function makePage() {
   for(var i = 0; i < storeArr.length; i++){
-    storeArr[i].makeList();
+    storeArr[i].makeTable();
   }
 }
 
