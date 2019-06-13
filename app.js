@@ -155,7 +155,6 @@ function makePage(){
   makeTotalsRow();
 }
 
-
 makePage();
 
 
@@ -170,7 +169,8 @@ var handleAddStoreForm = function(e){
 
   var newStore = new Store(formLocation, formMinCustomer, formMaxCustomer, formAvgCookiesPerCustomer);
   newStore.addRow();
-}
+  storeArr.push(newStore);
+};
 
 form.addEventListener('submit', handleAddStoreForm);
 
