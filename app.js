@@ -27,9 +27,15 @@ var Store = function(location, minCustomer, maxCustomer, avgCookiesPerCustomer, 
   this.maxCustomer = maxCustomer;
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
   this.cookiesPerHour = cookiesPerHour;
+
+  // storeArr.push(this);
 };
 
-// New store objects
+// Store.storeArr = [];
+
+
+
+// Existing store objects
 storeArr.push(new Store('1st and Pike', 23, 65, 6.3));
 storeArr.push(new Store('SeaTac Airport', 3, 24, 1.2));
 storeArr.push(new Store('Seattle Center', 11, 38, 3.7));
@@ -106,31 +112,7 @@ function sumOfDailyLocationTotals(){
     allTotals += storeArr[i].total;
   };
   return allTotals;
-}
-
-
-// Add new store row 
-var form = document.getElementById('form-set');
-var handleAddStoreForm = function(e){
-  e.preventDefault();
-
-  var formLocation = e.target.location.value;
-  var formMinCustomer = e.target.minCustomer.value;
-  var formMaxCustomer = e.target.maxCustomer.value;
-  var formAvgCookiesPerCustomer = e.target.avgCookiesPerCustomer.value;
-  console.log(formLocation)
-
-  var newStore = new Store(formLocation, formMinCustomer, formMaxCustomer, formAvgCookiesPerCustomer);
-  storeArr.push(newStore);
-  
-}
-
-console.log(storeArr)
-form.addEventListener('submit', handleAddStoreForm);
-
-
-
-
+};
 
 
 
@@ -166,9 +148,29 @@ function makeTotalsRow(){
 function makePage(){
   makeHeader();
   for(var i = 0; i < storeArr.length; i++){
+    // console(storeArr)
     storeArr[i].addRow();
   };
+  // addRow(a, b, c, d);
   makeTotalsRow();
 }
 
+
 makePage();
+
+
+var form = document.getElementById('add-store-form');
+var handleAddStoreForm = function(e){
+  e.preventDefault();
+
+  var formLocation = e.target.location.value;
+  var formMinCustomer = e.target.minCustomer.value;
+  var formMaxCustomer = e.target.maxCustomer.value;
+  var formAvgCookiesPerCustomer = e.target.avgCookiesPerCustomer.value;
+
+  var newStore = new Store(formLocation, formMinCustomer, formMaxCustomer, formAvgCookiesPerCustomer);
+  newStore.addRow();
+}
+
+form.addEventListener('submit', handleAddStoreForm);
+
