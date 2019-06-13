@@ -3,20 +3,47 @@
 <head>
   <title>Pat's Salmon Cookies</title>
   <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Nanum+Myeongjo&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./sales.html">Sales</a></li>
+        <li id="title"><a href="./index.html">Pat's Salmon Cookies</a></li>
+        <li id="sales"><a href="./sales.html">Sales</a></li>
       </ul>
     </nav>
   </header>
   <main>
+    <form id="add-store-form">
+      <fieldset>
+        <legend>Add a new store location</legend>
+        <div>
+          <label for="location">Location Name</label>
+          <input id="location" name="">
+        </div>
+        <div>
+          <label for="minCustomer">Min # of Customers</label>
+          <input id="minCustomer" name="minCustomer">
+        </div>
+        <div>
+          <label for="maxCustomer">Max # of Customers</label>
+          <input id="maxCustomer" name="maxCustomer">
+        </div>
+        <div>
+          <label for="avgCookiesPerCustomer">Avg Cookies per Customer</label>
+          <input id="avgCookiesPerCustomer" name="avgCookiesPerCustomer">
+        </div>
+        <div>
+          <input type="submit" value="Add Store">
+        </div>
+      </fieldset>
+    </form>
     <table id="store-table">
     </table>
+
   </main>
   <script src="./app.js"></script>
+  <!-- <script src="./form.js"></script> -->
 </body>
 </html>
