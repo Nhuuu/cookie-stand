@@ -58,7 +58,7 @@ nav > ul > li:nth-child(2){
 nav > ul > li > a {
   text-decoration: none;
   color: rgb(160, 118, 64);
-  font-size: 24px;
+  font-size: 16px;
 }
 
 nav > ul > li > a:hover {
@@ -69,14 +69,14 @@ nav > ul > li > a:hover {
 /* Main styles */
 main > h2:first-child {
   font-family: 'Luckiest Guy', cursive;
-  font-size: 70px;
+  font-size: 60px;
   color: rgb(77, 57, 27);
   text-align: center;
   margin-bottom: 100px;
 }
 
 h3 {
-  font-size: 36px;
+  font-size: 26px;
 }
 
 section {
@@ -84,8 +84,12 @@ section {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#our-story img {
+  width: 70%;
+}
+
 section > p {
-  font-size: 28px;
+  font-size: 20px;
 }
 
 section > ul {
@@ -114,12 +118,12 @@ footer > ul > li {
   margin: 0 30px;
 }
 
-footer > ul > li:nth-child(3) {
+footer > ul > li:nth-child(4) {
   float: right;
 }
 
 footer > ul > li > img {
-  height: 90px;
+  height: 80px;
   margin-right: 30px;
 }
 
@@ -135,7 +139,7 @@ footer > ul > li {
   margin: auto;
   margin-bottom: 50px;
   color: rgb(77, 57, 27);
-  font-size: 22px;
+  font-size: 18px;
 }
 
 input {
