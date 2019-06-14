@@ -140,6 +140,7 @@ footer > ul > li {
   margin-bottom: 50px;
   color: rgb(77, 57, 27);
   font-size: 18px;
+  background-color: rgb(231, 222, 216);
 }
 
 input {
@@ -158,12 +159,9 @@ table{
   margin: auto;
   padding: 5px;
   text-align: center;
+  background-color: rgb(231, 222, 216);
   color: rgb(77, 57, 27);
   margin-bottom: 100px;
-}
-
-tr {
-  margin-right: 35px;
 }
 
 td {
