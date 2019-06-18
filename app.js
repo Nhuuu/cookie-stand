@@ -134,25 +134,26 @@ function calculateTotals(){
 // Add Totals row
 function makeTotalsRow(){
   var tfootEl = document.createElement('tfoot');
-  var footerRow = document.createElement('tr');
-  var footerCell = document.createElement('td');
-  footerCell.textContent = 'Totals';
-  footerRow.appendChild(footerCell);
+  trEl = document.createElement('tr');
+  trEl.id = 'footerRow';
+  tdEl = document.createElement('td');
+  tdEl.textContent = 'Totals';
+  trEl.appendChild(tdEl);
 
   calculateTotals();
   for(var i = 0; i < totals.length; i++){
-    footerCell = document.createElement('td');
+    tdEl = document.createElement('td');
     console.log(totals[i]);
-    footerCell.textContent = totals[i];
-    footerRow.appendChild(footerCell);
+    tdEl.textContent = totals[i];
+    trEl.appendChild(tdEl);
   };
   
 
-  footerCell = document.createElement('td');
-  footerCell.textContent = sumOfDailyLocationTotals();
-  footerRow.appendChild(footerCell);
+  tdEl = document.createElement('td');
+  tdEl.textContent = sumOfDailyLocationTotals();
+  trEl.appendChild(tdEl);
 
-  tfootEl.appendChild(footerRow);
+  tfootEl.appendChild(trEl);
   storeTable.appendChild(tfootEl);
 }
 
@@ -173,20 +174,21 @@ makePage();
 var form = document.getElementById('add-store-form');
 var handleAddStoreForm = function(e){
   e.preventDefault();
-
+  
   var formLocation = e.target.location.value;
   var formMinCustomer = e.target.minCustomer.value;
   var formMaxCustomer = e.target.maxCustomer.value;
   var formAvgCookiesPerCustomer = e.target.avgCookiesPerCustomer.value;
-
+  
   var newStore = new Store(formLocation, formMinCustomer, formMaxCustomer, formAvgCookiesPerCustomer);
   storeArr.push(newStore);
   newStore.addRow();
-
-  makeTotalsRow();
-
-  
+  var footerRow = document.getElementById('footerRow'); 
+  if(footerRow){
+    footerRow.remove();
+    makeTotalsRow();
+  }
 };
 
-form.addEventListener('submit', handleAddStoreForm);
 
+form.addEventListener('submit', handleAddStoreForm);
